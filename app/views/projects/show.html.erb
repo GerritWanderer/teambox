@@ -1,0 +1,18 @@
+<p id="notice"><%= notice %></p>
+
+<p><b>Title:</b> <%= @project.title %></p>
+
+<h3>Mesages</h3>
+<div id="messages">
+  <% @project.messages.each do |message| %>
+    <div class="message">
+      <p class="body"><%= message.body %></p>
+      <p class="meta"><%= message.created_at.strftime("%d.%m.%Y") %> / <%= message.created_at.strftime("%H:%M") %> / Absender / <%= message.task %></p>
+    </div>
+  <% end %>
+</div>
+
+
+<%= link_to 'Edit Project', edit_project_path(@project) %> |
+<%= link_to 'New Message', new_project_message_path(@project) %> |
+<%= link_to 'Back to Project listing', projects_path %>
