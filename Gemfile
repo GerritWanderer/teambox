@@ -11,6 +11,7 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'
 
 group :test do
   gem 'turn', :require => false
