@@ -1,84 +1,47 @@
 class MessagesController < ApplicationController
-  # GET /messages
-  # GET /messages.json
-  def index
-    @messages = Message.all
+  before_filter :init_messages
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @messages }
-    end
+  def index # see init_messages
+  end
+  
+  def show # see init_messages
   end
 
-  # GET /messages/1
-  # GET /messages/1.json
-  def show
-    @message = Message.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @message }
-    end
+  def new # see init_messages
   end
 
-  # GET /messages/new
-  # GET /messages/new.json
-  def new
-    @project = Project.find(params[:project_id])
-    @message = Message.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @message }
-    end
+  def edit # see init_messages
   end
 
-  # GET /messages/1/edit
-  def edit
-    @message = Message.find(params[:id])
-  end
-
-  # POST /messages
-  # POST /messages.json
   def create
-    @message = Message.new(params[:message])
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @message.project, notice: 'Message was successfully created.' }
-        format.json { render json: @message, status: :created, location: @message }
-      else
-        format.html { render action: "new" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    @message = @project.messages.build(params[:message])
+    if @message.save
+      redirect_to @project, :notice => 'Message was successfully created.'
+    else
+      render "new"
     end
   end
 
-  # PUT /messages/1
-  # PUT /messages/1.json
   def update
-    @message = Message.find(params[:id])
-
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        format.html { redirect_to @message, notice: 'Message was successfully updated.' }
-        format.json { head :ok }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @message.errors, status: :unprocessable_entity }
-      end
+    if @message.update_attributes(params[:message])
+      redirect_to @project, notice: 'Message was successfully updated.'
+    else
+      render "edit"
     end
   end
 
-  # DELETE /messages/1
-  # DELETE /messages/1.json
   def destroy
-    @message = Message.find(params[:id])
-    @message.destroy
-
-    respond_to do |format|
-      format.html { redirect_to messages_url }
-      format.json { head :ok }
+    if @project.messages.delete(@message)
+      flash[:notice] = 'Message was successfully deleted.'
+    else
+      flash[:alert] = 'Message was NOT deleted.'
     end
+    redirect_to @project
+  end
+  
+  protected
+  def init_messages
+    @project = Project.find(params[:project_id])
+    @message = params[:id] ? @project.messages.find(params[:id]) : Message.new
   end
 end

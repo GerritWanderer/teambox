@@ -4,14 +4,16 @@
   <tr>
     <th>Title</th>
     <th>Messages</th>
-    <th>Meta</th>
+    <th>Attachments</th>
+    <th>Info</th>
     <th>Actions</th>
   </tr>
 <% @projects.each do |project| %>
   <tr>
     <td><%= link_to project.title, project %></td>
     <td><%= project.messages.count %></td>
-    <td><%= project.id %> / <%= project.created_at.strftime("%d.%m.%Y") %></td>
+    <td><%= project.attachments.count %></td>
+    <td>ID: <%= project.id %> / <%= project.created_at.strftime("%d.%m.%Y") %></td>
     <td>
       <%= link_to 'Edit', edit_project_path(project) %>
       <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>

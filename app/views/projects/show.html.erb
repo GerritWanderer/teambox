@@ -7,12 +7,29 @@
   <% @project.messages.each do |message| %>
     <div class="message">
       <p class="body"><%= message.body %></p>
-      <p class="meta"><%= message.created_at.strftime("%d.%m.%Y") %> / <%= message.created_at.strftime("%H:%M") %> / Absender / <%= message.task %></p>
+      <p class="meta">
+        <%= message.created_at.strftime("%d.%m.%Y") %> / <%= message.created_at.strftime("%H:%M") %> / Absender / <%= message.task %> /
+        <%= link_to "Edit", edit_project_message_path(@project, message) %> /
+        <%= link_to "Delete", project_message_path(@project, message), confirm: 'Are you sure?', method: :delete %>
+      </p>
+    </div>
+  <% end %>
+</div>
+<h3>Attachments</h3>
+<div id="attachments">
+  <% @project.attachments.each do |attachment| %>
+    <div class="attachment">
+      <p class="body"><a href="<%= attachment.file.url %>"><%= attachment.file_content_type %></a></p>
+      <p class="meta">
+        <%= attachment.created_at.strftime("%d.%m.%Y") %> / <%= attachment.created_at.strftime("%H:%M") %> / Absender /
+        <%= link_to "Edit", edit_project_attachment_path(@project, attachment) %> /
+        <%= link_to "Delete", project_attachment_path(@project, attachment), confirm: 'Are you sure?', method: :delete %>
+      </p>
     </div>
   <% end %>
 </div>
 
-
 <%= link_to 'Edit Project', edit_project_path(@project) %> |
 <%= link_to 'New Message', new_project_message_path(@project) %> |
+<%= link_to 'New Attachment', new_project_attachment_path(@project) %> |
 <%= link_to 'Back to Project listing', projects_path %>

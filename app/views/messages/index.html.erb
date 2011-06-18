@@ -11,19 +11,18 @@
     <th></th>
   </tr>
 
-<% @messages.each do |message| %>
+<% @project.messages.each do |message| %>
   <tr>
     <td><%= message.title %></td>
     <td><%= message.body %></td>
     <td><%= message.task %></td>
-    <td><%= message.project %></td>
-    <td><%= link_to 'Show', message %></td>
-    <td><%= link_to 'Edit', edit_message_path(message) %></td>
-    <td><%= link_to 'Destroy', message, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_project_message_path(@project.id, message.id) %></td>
+    <td><%= link_to 'Destroy', [@project, message], confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Message', new_message_path %>
+<%= link_to 'New Message', new_project_message_path %>
+<%= link_to 'Back to Project', @project %>
