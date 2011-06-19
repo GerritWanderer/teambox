@@ -9,6 +9,10 @@ gem 'compass', :git => 'git://github.com/chriseppstein/compass.git', :branch => 
 gem 'coffee-script'
 gem 'uglifier'
 
+# for Heroku
+gem 'execjs'
+gem 'therubyracer'
+
 gem 'jquery-rails'
 gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
 gem 'devise', :git => 'git://github.com/plataformatec/devise', :branch => 'master'

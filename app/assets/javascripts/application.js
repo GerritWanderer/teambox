@@ -9,10 +9,6 @@
 //= require_tree .
 $(document).ready(function() {
   $( ".calendarLayout" ).datepicker();
-  $("#project_user_ids").multiselect({
-    noneSelectedText: 'Wähle Benutzer',
-    selectedList: 4
-  })
 });
 
 // var natDays = ["4/22/2009","4/23/2009","4/24/2009","4/25/2009","4/26/2009","5/27/2009","5/28/2009","6/26/2009","6/27/2009","6/28/2009","6/29/2009","6/30/2009"];

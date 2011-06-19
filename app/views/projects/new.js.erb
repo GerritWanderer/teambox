@@ -3,6 +3,10 @@ if ($("li.closeCreate").is(":visible")) {
 } else {
   if ($("div#projectContainer").is(":visible")) { $("div#projectContainer").toggle() }
   $("div#projectContainer").html("<%= escape_javascript(render(:partial => "form")) %>").slideToggle();
+  $("#project_user_ids").multiselect({
+    noneSelectedText: 'Wähle Benutzer',
+    selectedList: 4
+  })
 }
 $("div#contentBackground").toggleClass("inactive")
 $("li.create, li.closeCreate").toggle();
