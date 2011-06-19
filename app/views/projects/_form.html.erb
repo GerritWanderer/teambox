@@ -1,21 +1,33 @@
-<%= form_for(@project) do |f| %>
-  <% if @project.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+<ul id='filter'>
+	<li class='active'><a>Neues Projekt</a></li>
+</ul>
+<div id="newProject">
+  <%= form_for(@project) do |f| %>
+    <% if @project.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
 
-      <ul>
-      <% @project.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% @project.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="formRow">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+    <div class="formRow">
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </div>
+    <div class="formRow">
+      <input type="button" class="input_btn add" value="Projektbeteiligten hinzufügen" id="btn_1">
+    </div>
+    <div class="formRow">
+      <%= f.submit :class => "input_btn save" %>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

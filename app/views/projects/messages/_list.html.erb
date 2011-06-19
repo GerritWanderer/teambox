@@ -1,0 +1,19 @@
+<ul id='filterDetail'>
+	<li class='news mail first active'><%= link_to "Nachrichten", project_messages_path(@project) %></li>
+	<li class='news file'><%= link_to "Dateien", project_attachments_path(@project) %></li>
+	<li class='news date'><a>Termine</a></li>
+	<li class="last"><%= link_to "Neue Nachricht", new_project_message_path(@project) %></li>
+</ul>
+<div id='messages'>
+  <% @project.messages.each do |message| %>
+    <div class="message">
+      <ul>
+  			<li class='title'><%= message.title %></li>
+  			<li class='meta'>
+  			<%= message.created_at.strftime("%d.%m.%Y") %> / <%= message.created_at.strftime("%H:%M") %> / Absender / <%= message.task %> /
+        <%= link_to "Edit", edit_project_message_path(@project, message) %> /
+        <%= link_to "Delete", project_message_path(@project, message), confirm: 'Are you sure?', method: :delete %></li>
+  		</ul>
+    </div>
+  <% end %>
+</div>

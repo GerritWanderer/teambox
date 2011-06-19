@@ -1,0 +1,17 @@
+<ul id='filter'>
+	<li class='active'><a>Projekte</a></li>
+</ul>
+<div id='projects'>
+  <% @projects.each do |project| %>
+  	<div class='project'>
+  		<ul>
+  			<li class='title'><span><%= link_to project.title, project %></span></li>
+  			<li class='news mails'><%= link_to ("%02d" % project.messages.count), project_messages_path(project.id) %></li>
+  			<li class='news files'><%= link_to ("%02d" % project.attachments.count), project_attachments_path(project.id) %></li>
+  			<li class='meta'><span><%= project.id %> / <%= project.created_at.strftime("%d.%m.%Y") %></span></li>
+  			<li class='action edit'><%= link_to image_tag("/assets/img_layout/edit-off.png"), edit_project_path(project) %></li>
+  			<li class='action del'><%= link_to image_tag("/assets/img_layout/delete-off.png"), project, confirm: 'Are you sure?', method: :delete %></li>
+  		</ul>
+  	</div>
+  <% end %>
+</div>

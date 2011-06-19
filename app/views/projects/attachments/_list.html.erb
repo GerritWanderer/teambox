@@ -1,0 +1,20 @@
+<ul id='filterDetail'>
+	<li class='news mail first'><%= link_to "Nachrichten", project_messages_path %></li>
+	<li class='news file active'><%= link_to "Dateien", project_attachments_path %></li>
+	<li class='news date'><a>Termine</a></li>
+	<li class="last"><%= link_to "Neue Datei", new_project_attachment_path %></li>
+</ul>
+<div id='messages'>
+  <% @project.attachments.each do |attachment| %>
+    <div class="message">
+      <ul>
+  			<li class='title'><a href="<%= attachment.file.url %>"><%= attachment.file_file_name %></a></li>
+  			<li class='meta'>
+  			  <%= attachment.created_at.strftime("%d.%m.%Y") %> / <%= attachment.created_at.strftime("%H:%M") %> / Absender /
+          <%= link_to "Edit", edit_project_attachment_path(@project, attachment) %> /
+          <%= link_to "Delete", project_attachment_path(@project, attachment), confirm: 'Are you sure?', method: :delete %>
+        </li>
+  		</ul>
+    </div>
+  <% end %>
+</div>

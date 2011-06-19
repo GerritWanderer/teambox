@@ -1,0 +1,24 @@
+@import "compass/reset";
+@import "compass/layout";
+@import "compass/css3";
+@import "blueprint";
+
+$blueprint-grid-columns: 96;
+$blueprint-container-size: 960px;
+$blueprint-grid-margin: 0px;
+$blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
+
+@mixin grid($grids: 1, $marginLeft: 0, $marginRight: 0, $paddingLeft: 0, $paddingRight: 0) {
+  display: inline;
+  float: left;
+  width: $grids * 10px;
+  margin-left: $marginLeft * 10px;
+  margin-right: $marginRight * 10px;
+  padding-left: $paddingLeft * 10px;
+  padding-right: $paddingRight * 10px;
+}
+
+body * {
+  font-size: 14px;
+  font-family: Arial, Helvetica, sans-serif;
+}

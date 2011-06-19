@@ -1,7 +1,134 @@
-// Place all the styles related to the Projects controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "basic";
 
-body.Projects {
-  // Place scoped styles here
+div#projectContainer {
+  width: 742px;
+	float: left;
 }
+div#projectBackground {
+  ul#manage {
+    float: right;
+    margin-bottom: 40px;
+    li {
+      display: block;
+      float: left;
+      width: 190px;
+      margin-left: 15px;
+      height: 50px;
+      text-align: center;
+      a {
+      	display: block;
+      	padding-top: 10px;
+      	color: #fff;
+      }
+    }
+    li.selectArc { background: url(/assets/img_layout/buttons/button-silver-big.png) center top no-repeat; }
+    li.selectArc.active, li.selectArc:hover { background: url(/assets/img_layout/buttons/button-silver-big-on.png) center top no-repeat; }
+    li.create { background: url(/assets/img_layout/buttons/button-orange-big.png) center top no-repeat; }
+    li.create.active, li.create:hover { background: url(/assets/img_layout/buttons/button-orange-big-on.png) center top no-repeat; }
+    li.selectArc a { color: #585858; }
+  }
+}
+
+ul#filter {
+  height: 25px;
+  border-bottom: 4px solid #888888;
+  width: 665px;
+  li {
+    float: left;
+    margin-right: 2px;
+    padding: 6px 15px 5px;
+    background: url(/assets/img_layout/reiter-rundeEcke.jpg) left top no-repeat #888888;
+  }
+}
+
+div.project {
+  float: left;
+  width: 665px;
+  margin-left: 0px;
+  margin-right: 0x;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #EBEBEB;
+  margin-bottom: 3px;
+  ul li {
+    display: block;
+    float: left;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-left: 0px;
+    padding-right: 0px;
+    font-size: 10px;
+    color: #585858;
+    height: 36px;
+    span {
+    	display: block;
+    	padding-top: 11px;
+     	font-size: 10px;
+    	line-height: 90%;
+    }
+    a { font-size: 10px; color: #585858; text-decoration: none; }
+  }
+  li.title {
+    width: 403px;
+    padding-left: 10px;
+    a, span {
+      font-size: 16px;
+    }
+  }
+  li.news {
+    width: 36px;
+    a {
+      color: #eb7e00;
+      padding-left: 12px;
+      letter-spacing: -1px;
+      display: block;
+      padding-top: 20px;
+    }
+  }
+  li.news.mails { background: url(/assets/img_layout/anzeige-neueMails.png) left top no-repeat; }
+  li.news.mails:hover { background: url(/assets/img_layout/anzeige-neueMails-on.png) left top no-repeat; }
+  li.news.files { background: url(/assets/img_layout/anzeige-neueDateien.png) left top no-repeat; }
+  li.news.files:hover { background: url(/assets/img_layout/anzeige-neueDateien-on.png) left top no-repeat; }
+  li.meta { width: 119px; }
+  li.meta span { padding-top: 14px; }
+  li.action { width: 30px; }
+  
+  li.action.view { background: url(/assets/img_layout/view.png) left top no-repeat; }
+  li.action.view.active, li.action.view:hover { background: url(/assets/img_layout/view.png) left top no-repeat; }
+}
+
+//body#projects {
+//  ul#manage {
+//    float: right;
+//    li {
+//      @include grid(19,1.5);
+//      height: 40px;
+//    }
+//  }
+//  ul#filter {
+//    height: 25px;
+//    border-bottom: 4px solid #585858;
+//    li {
+//      float: left;
+//      margin-right: 2px;
+//      padding: 6px 15px 3px;
+//      background-color: #7A7A7A;
+//    }
+//  }
+//  div#projects {
+//    margin-top: 10px;
+//    div.even { @include grid(47,0,1.5) }
+//    div.odd { @include grid(47,1.5) }
+//    div.project {
+//      background-color: #EBEBEB;
+//      margin-bottom: 5px;
+//      ul {
+//        height: 20px;
+//        margin: 10px;
+//        li.title { @include grid(25); }
+//        li.meta { @include grid(14); }
+//        li.action { @include grid(3); }
+//      }
+//    }
+//  }
+//}

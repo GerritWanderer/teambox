@@ -7,22 +7,36 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="<%= controller.controller_name %>">
-  <div id="navigation">
-    <ul>
-      <% if user_signed_in? %>
-        <li><%= link_to "My Account [#{current_user}]", edit_user_registration_path %></li>
-        <li><%= link_to "Logout", destroy_user_session_path %></li>
-      <% else %>
-        <li><%= link_to "Login", new_user_session_path %></li>
-        <li><%= link_to "Create Account", new_user_registration_path %></li>
-      <% end %>
-    </ul>
+  <div id="wrapper">
+    <div id='headerBackground'>
+  		<div class='headerLayout'>
+  			<div id='logo'>
+  				<div class='logoLayout'>
+  					<img alt='Ihr Firmenlogo' src='/assets/img_content/test.png' />
+  				</div>
+  			</div>
+  			<div id='nav'>
+  				<div class='navLayout'>
+  					<ul>
+  					  <% if user_signed_in? %>
+                <li class='first'><%= link_to current_user, edit_user_registration_path %></li>
+                <li><%= link_to "Abmelden", destroy_user_session_path %></li>
+                <li class='button active'><a>Startseite</a></li>
+                <li class='button'><a>Einstellungen</a></li>
+                <li class='button'><a>Hilfe</a></li>
+              <% else %>
+                <li><%= link_to "Login", new_user_session_path %></li>
+                <li><%= link_to "Create Account", new_user_registration_path %></li>
+              <% end %>
+  					</ul>
+  				</div>
+  			</div>
+  		</div>
+  	</div>
+    <%= yield %>
+    <div id='footer'>
+      <div class='footerLayout'>IhrFirmenname - Projektmanagement</div>
+    </div>
   </div>
-  <div id="flash">
-    <% flash.each do |key, value| %>
-      <div class ="<%= key %>"><%= value %></div>
-    <% end %>
-  </div>
-  <%= yield %>
 </body>
 </html>

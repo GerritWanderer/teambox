@@ -1,0 +1,10 @@
+<div id='projectBackground'>
+	<ul id='login'>
+	  <%= form_for(:user, :url => user_session_path) do |f| %>
+      <%= f.text_field :email, :class => "test" %>
+      <%= f.password_field :password %>
+      <%= f.submit 'Sign in' %>
+      <%= link_to "Forgot your password?", new_password_path('user') %>
+    <% end %>
+	</ul>
+</div>

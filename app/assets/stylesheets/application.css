@@ -5,3 +5,242 @@
  *= require_self
  *= require_tree . 
 */
+.clear {
+  clear: both;
+  display: block;
+  overflow: hidden;
+  visibility: hidden;
+  width: 0;
+  height: 0;
+}
+
+body {
+  background-color: #d6d6d6;
+}
+
+
+
+div#projectBackground {
+	width: 970px;
+	margin: auto;
+	background-color: #d6d6d6;
+}
+
+div#projectContainer div#projects {
+  margin-top: 6px;
+  width: 665px;
+}
+
+
+/* <--- Kalender */
+div#calendarBackground, div#calendarBackgroundB {
+	width: 228px;
+	float: right;
+}
+/* Kalender ---> */
+
+/* <--- Content */
+div#contentBackground {
+	padding-top: 40px;
+}
+div#contentBackground div#selectedProject {
+	width: 970px;
+	margin: 0 auto;
+}
+div#contentBackground div.containerWrapper {
+	background-color: #efefef;
+}
+
+div#contentBackground div.container {
+	width: 970px;
+	margin: 0 auto;
+	padding: 40px 0px;
+}
+div#contentBackground div.container div#contentContainer {
+	width: 742px;
+	float: left;
+}
+
+
+/* <--- Filter Navigation fuer Projektdetailansicht */
+ul#filterDetail {
+  height: 25px;
+  border-bottom: 4px solid #888888;
+  width: 665px;
+}
+ul#filterDetail li {
+  float: left;
+  margin-right: 2px;
+  padding: 6px 15px 5px;
+  background-color: #c6c6c6;
+}
+ul#filterDetail li.active {
+  background-color: #888888;
+}
+ul#filterDetail li.first {
+  background: url(/assets/img_layout/reiter-rundeEcke-weiss-on.jpg) left top no-repeat #c6c6c6;
+}
+ul#filterDetail li.first.active {
+  background: url(/assets/img_layout/reiter-rundeEcke-weiss.jpg) left top no-repeat #888888;
+}
+
+ul#filterDetail li a {
+  padding: 14px 45px 10px 0px;
+  color: #585858;
+}
+ul#filterDetail li.active a {
+  color: #000;
+}
+ul#filterDetail li.news.mail a {
+  background: url(/assets/img_layout/anzeige-neueMails.png) right top no-repeat;
+}
+
+ul#filterDetail li.news.file a {
+  background: url(/assets/img_layout/anzeige-neueDateien.png) right top no-repeat;
+}
+ul#filterDetail li.last {
+  float: right;
+  margin-right: 0;
+  background-color: transparent;
+  padding-right: 0;
+}
+ul#filterDetail li.last a {
+  background: url(/assets/img_layout/anzeige-neu.png) left top no-repeat;
+  text-align:right;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 25px;
+  padding-right: 0;
+  background-color: transparent;
+}
+
+/* Filter Navigation fuer Projektdetailansicht ---> */
+
+/* <--- Auflistung Nachrichten */
+div.message {
+  float: left;
+  width: 665px;
+  margin-left: 0px;
+  margin-right: 0x;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-color: #fff;
+  margin-bottom: 3px;
+}
+div.message ul {
+}
+div.message ul li {
+  display: block;
+  float: left;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-left: 0px;
+  padding-right: 0px;
+  font-size: 10px;
+  color: #585858;
+  height: 36px;
+}
+div.message ul li a {
+  font-size: 10px;
+}
+div.message ul li.title {
+  float: none;
+  font-size: 16px;
+  padding-left: 10px;
+  padding-top: 12px;
+}
+div.message ul li.meta {
+  padding-left: 10px;
+  height: 20px;
+}
+/* Auflistung Nachrichten ---> */
+
+/* Content ---> */
+
+
+/* <--- form elements */
+div#newProject {
+	width: 665px;
+	margin-top: 30px;
+}
+div.formRow {
+	margin-bottom: 20px;
+	clear: both;
+}
+div#newProject label {
+	display:block;
+	cursor:pointer;	
+	margin-bottom: 8px;
+	color: #585858;
+}	
+INPUT[type=text],
+INPUT[type=password],
+TEXTAREA {
+/*width:80%;*/
+	width:660px;
+	height:25px;
+	padding:0 3px;	
+	border:1px solid #ffa338;
+	background-color: #efefef;
+	clear:both;
+	margin-bottom: 5px;
+	color: #585858;
+	}
+TEXTAREA {
+	height:150px;
+	}
+
+	INPUT[type=text]:focus {
+		background:#fff;
+	}
+		
+	INPUT[type="button"], INPUT[type="submit"] {
+		float: right;
+		width:192px; 
+		height:27px;
+		padding:0; 
+		padding-bottom:6px;
+		border:0; 
+		
+		cursor:pointer;
+		outline:none;
+		margin-top:10px;
+		background: transparent url(img_layout/buttons/button-action-w192.png)  0 0 no-repeat;
+		text-align: center;
+    	color: #fff;
+    	text-decoration: none;
+		font-size: 12px;
+		
+	}
+	
+		INPUT[type="button"].add {
+			background-position:0 -27px;
+			color: #585858;
+		}
+		
+		INPUT[type="submit"].save {
+			background-position:0 0; 
+		}
+			
+	
+	INPUT[type="checkbox"], 
+	INPUT[type="radio"] {
+		cursor:pointer; 
+	}
+/* form elements ---> */
+
+
+/* <--- Footer */
+div#footer {
+	border-top: 1px solid #fff;
+	padding-top: 40px;
+	margin-top: 40px;
+}
+div#footer div.footerLayout {
+	width: 970px;
+	margin: 0 auto;
+	padding: 0 10px 10px 10px;
+	font-size: 10px;
+	color: #7A7A7A;
+}
+/* Footer ---> */

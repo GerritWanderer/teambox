@@ -5,12 +5,15 @@ class ProjectsController < ApplicationController
   end
 
   def show # see init_projects
+    render "index"
   end
   
   def new # see init_projects
+    render "index"
   end
 
   def edit # see init_projects
+    render "index"
   end
 
   def create # see init_projects
@@ -40,7 +43,9 @@ class ProjectsController < ApplicationController
   
   protected
   def init_projects
-    @projects = Project.all
+    @show_project_form, @show_projects, @project_button = Project.get_visibility_options(params[:controller], params[:action])
+    @projects = params[:closed].to_i == 1 ? Project.closed : Project.active
     @project = params[:id] ? Project.find(params[:id]) : Project.new
+    @messages = @project.messages
   end
 end

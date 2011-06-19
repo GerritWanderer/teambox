@@ -1,0 +1,33 @@
+<div id='contentBackground'>
+	<div id='selectedProject'>
+		<div class='project'>
+			<ul>
+				<li class='title'><span><%= @project.title %></span></li>
+				<li class='meta'><span><%= @project.id %> / <%= @project.created_at.strftime("%d.%m.%Y") %></span></li>
+				<li class='action view'><span><a></a></span></li>
+				<li class='action edit active'><%= link_to image_tag("/assets/img_layout/edit-off.png"), edit_project_path(@project) %></li>
+				<li class='action del'><%= link_to image_tag("/assets/img_layout/delete-off.png"), @project, confirm: 'Are you sure?', method: :delete %></li>
+			</ul>
+		</div>
+		<div class='clear'></div>
+	</div>
+	<div class='containerWrapper'>
+		<div class='container'>
+			<div id='contentContainer'>
+			  <%= render :partial => 'projects/messages/list' if @messages %>
+        <%= render :partial => 'projects/attachments/list' if @attachments %>
+				<div class='clear'></div>
+			</div>
+			<div id='calendarBackgroundB'>
+				<div class='calendarLayout'>
+					<img src='/assets/img_layout/calendar.jpg' alt="calendar dummy" />
+				</div>
+			</div>
+			<div class='clear'></div>
+		</div>
+	</div>
+</div>
+
+<%= link_to 'New Message', new_project_message_path(@project) %> |
+<%= link_to 'New Attachment', new_project_attachment_path(@project) %> |
+<%= link_to 'Back to Project listing', projects_path %>

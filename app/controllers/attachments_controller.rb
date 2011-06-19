@@ -2,6 +2,7 @@ class AttachmentsController < ApplicationController
   before_filter :init_attachments
   
   def index # see init_attachments
+    render "projects/index"
   end
   
   def show # see init_attachments
@@ -41,7 +42,10 @@ class AttachmentsController < ApplicationController
   
   protected
   def init_attachments
+    @show_project_form, @show_projects = Project.get_visibility_options(params[:controller], params[:action])
     @project = Project.find(params[:project_id])
+    @projects = @project.closed == 1 ? Project.closed : Project.active
     @attachment = params[:id] ? @project.attachments.find(params[:id]) : Attachment.new
+    @attachments = @project.attachments
   end
 end

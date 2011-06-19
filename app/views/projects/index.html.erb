@@ -1,27 +1,32 @@
-<h1>Listing projects</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Messages</th>
-    <th>Attachments</th>
-    <th>Info</th>
-    <th>Actions</th>
-  </tr>
-<% @projects.each do |project| %>
-  <tr>
-    <td><%= link_to project.title, project %></td>
-    <td><%= project.messages.count %></td>
-    <td><%= project.attachments.count %></td>
-    <td>ID: <%= project.id %> / <%= project.created_at.strftime("%d.%m.%Y") %></td>
-    <td>
-      <%= link_to 'Edit', edit_project_path(project) %>
-      <%= link_to 'Destroy', project, confirm: 'Are you sure?', method: :delete %>
-    </td>
-  </tr>
+<div id='projectBackground'>
+  <% flash.each do |key, value| %>
+    <div class ="flash <%= key %>"><div class="icon">&nbsp;</div><p><%= value %></p></div>
+  <% end %>
+	<ul id='manage'>
+	   <% if params[:action] == 'new' %>
+  	    <li class="selectArc"><%= link_to "Zurück zur Projektübersicht", projects_path(:closed => params[:closed] || 0) %></li>
+	  <% elsif params[:closed] == "0" %>
+	    <li class="selectArc"><%= link_to "Projekt-Archiv anzeigen", projects_path(:closed => 1) %></li>
+	  <% else %>
+	    <li class="selectArc"><%= link_to "Aktuelle Projekt anzeigen", projects_path %></li>
+	  <% end %>
+		<li class='create'><%= link_to 'New Project', new_project_path(:closed => params[:closed] || 0) %></li>
+	</ul>
+	<div id='projectContainer'>
+	  <% if @show_project_form %>
+	    <%= render :partial => 'projects/form' %>
+		<% elsif @show_projects %>
+		  <%= render :partial => 'projects/list' %>
+		<% end %>
+	  <div class='clear'></div>
+	</div>
+	<% if @show_projects %>
+  	<div id='calendarBackground'>
+  		<div class='calendarLayout'></div>
+  	</div>
+  	<div class='clear'></div>
+  <% end %>
+</div>
+<% unless @project.new_record? %>
+  <%= render :partial => 'projects/show' %>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Project', new_project_path %>

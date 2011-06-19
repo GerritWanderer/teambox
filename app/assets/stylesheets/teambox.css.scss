@@ -1,0 +1,100 @@
+@import "basic";
+
+a {text-decoration: none;}
+
+div#headerBackground{
+  height: 143px;
+  position: relative;
+  background: url(/assets/img_layout/headerBack.gif) center top no-repeat #efefef;
+  
+  div.headerLayout {
+    margin-left: auto;
+    margin-right: auto;
+    width: 970px; 
+  }
+  div#logo {
+    float: left;
+    width: 208px;
+    height: 143px;
+    background: url(/assets/img_layout/ihrLogo-back.png) left top no-repeat transparent;
+    text-align: center;
+    div.logoLayout {
+      width: 180px;
+      height: 115px;
+      margin: 20px auto;
+      img { margin-right: 10px }
+    }
+  }
+}
+
+div.notice {
+  background: url(/assets/img_layout/orange-back.png) left top repeat;
+  font-size: 12px;
+  color: #585858;
+  width: 550px;
+  height: 32px;
+  border: 1px solid white;
+  float: left;
+  
+  div.icon { 
+    width: 20px;
+    height: 17px;
+    margin: 7px 0px 0px 7px;
+    background: url(/assets/img_layout/notice.png) left top no-repeat;
+    float: left;
+  }
+  p { margin-top: 10px; }
+}
+
+div#projectBackground {
+  background-color: #d6d6d6;
+}
+
+#nav {
+  float: left;
+  width: 762px;
+  margin-top: 7px;
+  background: url(/assets/img_layout/navOben-rundeEcke.jpg) left top no-repeat #585858;
+  height: 86px;
+  overflow: hidden;
+  
+  .navLayout { padding-top: 55px; }
+  ul { float: right; }
+  ul li {
+    float: left;
+    margin-right: 2px;
+    color: #fff;
+    font-size: 12px;
+    height: 30px;
+    a {
+    	display: block;
+    	padding: 12px 10px 0 10px;
+    	font-size: 12px;
+    	color: #fff;
+    }
+    a:hover {
+    	text-decoration: underline;
+    }
+    a span {
+    	font-style: italic;
+    	font-size: 12px;
+    	color: #D6D6D6;
+    }
+  }
+  li.first {
+    background: url(/assets/img_layout/nav-teiler.gif) right top no-repeat;
+  }
+  li.button {
+    background-color: #7A7A7A;
+  }
+
+  li.button.active, li.button:hover {
+    background-color: #2A6D8D;
+  }
+
+  li.button a {
+    font-size: 16px;
+    padding-top: 8px;
+    border: 0;
+  }
+}

@@ -2,6 +2,7 @@ class MessagesController < ApplicationController
   before_filter :init_messages
 
   def index # see init_messages
+    render "projects/index"
   end
   
   def show # see init_messages
@@ -41,7 +42,10 @@ class MessagesController < ApplicationController
   
   protected
   def init_messages
+    @show_project_form, @show_projects = Project.get_visibility_options(params[:controller], params[:action])
     @project = Project.find(params[:project_id])
+    @projects = @project.closed == 1 ? Project.closed : Project.active
     @message = params[:id] ? @project.messages.find(params[:id]) : Message.new
+    @messages = @project.messages
   end
 end
