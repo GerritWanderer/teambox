@@ -7,7 +7,7 @@ div#projectContainer {
 div#projectBackground {
   ul#manage {
     float: right;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     li {
       display: block;
       float: left;
@@ -21,23 +21,28 @@ div#projectBackground {
       	color: #fff;
       }
     }
-    li.selectArc { background: url(/assets/img_layout/buttons/button-silver-big.png) center top no-repeat; }
+    li.selectArc, li.closeArc { background: url(/assets/img_layout/buttons/button-silver-big.png) center top no-repeat; }
     li.selectArc.active, li.selectArc:hover { background: url(/assets/img_layout/buttons/button-silver-big-on.png) center top no-repeat; }
-    li.create { background: url(/assets/img_layout/buttons/button-orange-big.png) center top no-repeat; }
+    li.create, li.closeCreate{ background: url(/assets/img_layout/buttons/button-orange-big.png) center top no-repeat; }
     li.create.active, li.create:hover { background: url(/assets/img_layout/buttons/button-orange-big-on.png) center top no-repeat; }
-    li.selectArc a { color: #585858; }
+    li.selectArc a, li.closeArc a { color: #585858; }
+    li.closeArc { display: none; }
   }
 }
 
 ul#filter {
   height: 25px;
-  border-bottom: 4px solid #888888;
+  border-bottom: 4px solid #a6a6a6;
   width: 665px;
   li {
     float: left;
     margin-right: 2px;
     padding: 6px 15px 5px;
-    background: url(/assets/img_layout/reiter-rundeEcke.jpg) left top no-repeat #888888;
+    border-radius: 6px 0 0 0;
+    background: url(/assets/img_layout/filter-back-off.png) 50% 50% repeat-x scroll #c6c6c6;
+  }
+  li.active {
+    background: url(/assets/img_layout/filter-back-on.png) 50% 50% repeat-x scroll #888888;
   }
 }
 
@@ -93,7 +98,7 @@ div.project {
   li.meta span { padding-top: 14px; }
   li.action { width: 30px; }
   
-  li.action.view { background: url(/assets/img_layout/view.png) left top no-repeat; }
+  li.action.view { background: url(/assets/img_layout/view.png) left top no-repeat; width: 73px; }
   li.action.view.active, li.action.view:hover { background: url(/assets/img_layout/view.png) left top no-repeat; }
 }
 

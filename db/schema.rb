@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110618175809) do
+ActiveRecord::Schema.define(:version => 20110619161656) do
 
   create_table "attachments", :force => true do |t|
     t.string   "file_file_name"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110618175809) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "readers"
   end
 
   add_index "attachments", ["project_id"], :name => "index_attachments_on_project_id"
@@ -31,9 +32,11 @@ ActiveRecord::Schema.define(:version => 20110618175809) do
     t.integer  "project_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "readers"
+    t.integer  "topic_id"
+    t.text     "topic_type", :default => "Message"
+    t.integer  "user_id"
   end
-
-  add_index "messages", ["project_id"], :name => "index_messages_on_project_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title"
@@ -42,6 +45,14 @@ ActiveRecord::Schema.define(:version => 20110618175809) do
     t.integer  "closed",      :default => 0
     t.text     "description"
   end
+
+  create_table "projects_users", :id => false, :force => true do |t|
+    t.integer "user_id"
+    t.integer "project_id"
+  end
+
+  add_index "projects_users", ["project_id"], :name => "index_projects_users_on_project_id"
+  add_index "projects_users", ["user_id"], :name => "index_projects_users_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "firstname"

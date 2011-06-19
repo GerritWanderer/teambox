@@ -14,7 +14,6 @@
         </ul>
       </div>
     <% end %>
-
     <div class="formRow">
       <%= f.label :title %>
       <%= f.text_field :title %>
@@ -24,10 +23,11 @@
       <%= f.text_area :description %>
     </div>
     <div class="formRow">
-      <input type="button" class="input_btn add" value="Projektbeteiligten hinzufügen" id="btn_1">
+      <%= f.collection_select :user_ids, User.all, :id, :firstname, {}, { :selected => User.all, :multiple => true } %>
     </div>
     <div class="formRow">
       <%= f.submit :class => "input_btn save" %>
     </div>
   <% end %>
+  <div class='clear'></div>
 </div>

@@ -6,13 +6,14 @@
 </ul>
 <div id='messages'>
   <% @project.attachments.each do |attachment| %>
-    <div class="message">
+    <div class="message <%= attachment.file_content_type.split('/')[1] %> <%= 'read' if attachment.readers.index(current_user.id) %>">
       <ul>
-  			<li class='title'><a href="<%= attachment.file.url %>"><%= attachment.file_file_name %></a></li>
+  			<li class='title'><a href="<%= attachment.file.url %>" target="_blank"><%= attachment.file_file_name %></a></li>
   			<li class='meta'>
   			  <%= attachment.created_at.strftime("%d.%m.%Y") %> / <%= attachment.created_at.strftime("%H:%M") %> / Absender /
           <%= link_to "Edit", edit_project_attachment_path(@project, attachment) %> /
-          <%= link_to "Delete", project_attachment_path(@project, attachment), confirm: 'Are you sure?', method: :delete %>
+          <%= link_to "Delete", project_attachment_path(@project, attachment), confirm: 'Are you sure?', method: :delete %> /
+          <%= link_to "Als gelesen markieren", read_project_attachment_path(@project, attachment) %>
         </li>
   		</ul>
     </div>

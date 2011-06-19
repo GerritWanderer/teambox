@@ -41,7 +41,7 @@ div#calendarBackground, div#calendarBackgroundB {
 
 /* <--- Content */
 div#contentBackground {
-	padding-top: 40px;
+	padding-top: 20px;
 }
 div#contentBackground div#selectedProject {
 	width: 970px;
@@ -49,6 +49,9 @@ div#contentBackground div#selectedProject {
 }
 div#contentBackground div.containerWrapper {
 	background-color: #efefef;
+}
+div#contentBackground.inactive {
+	opacity: 0.3;
 }
 
 div#contentBackground div.container {
@@ -65,7 +68,7 @@ div#contentBackground div.container div#contentContainer {
 /* <--- Filter Navigation fuer Projektdetailansicht */
 ul#filterDetail {
   height: 25px;
-  border-bottom: 4px solid #888888;
+  border-bottom: 4px solid #a6a6a6;
   width: 665px;
 }
 ul#filterDetail li {
@@ -73,15 +76,16 @@ ul#filterDetail li {
   margin-right: 2px;
   padding: 6px 15px 5px;
   background-color: #c6c6c6;
+  border-radius: 6px 0 0 0;
 }
 ul#filterDetail li.active {
-  background-color: #888888;
+  background: url(/assets/img_layout/filter-back-on.png) 50% 50% repeat-x #888888;
 }
 ul#filterDetail li.first {
-  background: url(/assets/img_layout/reiter-rundeEcke-weiss-on.jpg) left top no-repeat #c6c6c6;
+  background: url(/assets/img_layout/filter-back-off.png) 50% 50% repeat-x #c6c6c6;
 }
 ul#filterDetail li.first.active {
-  background: url(/assets/img_layout/reiter-rundeEcke-weiss.jpg) left top no-repeat #888888;
+  background: url(/assets/img_layout/filter-back-on.png) 50% 50% repeat-x #888888;
 }
 
 ul#filterDetail li a {
@@ -117,6 +121,14 @@ ul#filterDetail li.last a {
 /* Filter Navigation fuer Projektdetailansicht ---> */
 
 /* <--- Auflistung Nachrichten */
+div#messages {
+  width: 665px;
+  margin-left: 0px;
+  margin-right: 0x;
+  padding-left: 0px;
+  padding-right: 0px;
+
+}
 div.message {
   float: left;
   width: 665px;
@@ -124,8 +136,19 @@ div.message {
   margin-right: 0x;
   padding-left: 0px;
   padding-right: 0px;
+  background-color: #ffeac3;
+  margin-bottom: 6px;
+}
+div.message.read {
   background-color: #fff;
-  margin-bottom: 3px;
+}
+div.answer {
+  margin-left: 0px;
+  margin-right: 0x;
+  padding-left: 30px;
+  padding-right: 0px;
+  background: url(/assets/img_layout/answer.jpg) left top no-repeat #f2f2f2;
+  margin-bottom: 1px;
 }
 div.message ul {
 }
@@ -149,48 +172,122 @@ div.message ul li.title {
   padding-left: 10px;
   padding-top: 12px;
 }
+div.message ul li.title a {
+  display: block;
+  font-size: 16px;
+  color: #585858;
+}
 div.message ul li.meta {
   padding-left: 10px;
   height: 20px;
 }
+
 /* Auflistung Nachrichten ---> */
 
 /* Content ---> */
 
 
 /* <--- form elements */
-div#newProject {
+div#newProject, div#standardForm {
 	width: 665px;
 	margin-top: 30px;
 }
+div#standardForm {
+    float: left;
+}
+div.rightArea {
+    padding-top: 20px;
+    float: right;
+}
+
 div.formRow {
 	margin-bottom: 20px;
 	clear: both;
 }
-div#newProject label {
+div.formRow.rightText {
+    text-align:right;
+}
+div#standardForm div.formRow {
+    padding-left: 10px;
+
+}
+p.buttonStyle {
+    color: #585858;
+    float: right;
+    font-size: 12px;
+    padding-top: 0px;
+    width:192px; 
+        height:27px;
+        padding-bottom:0px;
+        border:0; 
+        
+        cursor:pointer;
+        outline:none;
+        margin-top:10px;
+        background: transparent url(img_layout/buttons/button-action-w192.png)  0 -27px no-repeat;
+        text-align: center;
+        color: #fff;
+        text-decoration: none;
+        font-size: 12px;
+}
+p.buttonStyle.left {
+    float: none;
+}
+p.buttonStyle a {
+    color: #585858;
+    display: block;
+    font-size: 12px;
+    padding-top: 6px;
+}
+div.formRow label {
 	display:block;
 	cursor:pointer;	
 	margin-bottom: 8px;
 	color: #585858;
-}	
+}
+div.formRow label.small {
+    display:block;
+    float: left;
+    width: 186px;
+    margin-right: 10px;
+    padding-top: 8px;
+    padding-bottom: 5px;
+}   
 INPUT[type=text],
 INPUT[type=password],
-TEXTAREA {
-/*width:80%;*/
+INPUT[type=email],
+TEXTAREA, SELECT {
 	width:660px;
-	height:25px;
+	height:27px;
 	padding:0 3px;	
-	border:1px solid #ffa338;
-	background-color: #efefef;
+	border:1px solid #a6a6a6 !important;
+	background: url(img_layout/input_text_bg.png) left top repeat-x #efefef;
 	clear:both;
 	margin-bottom: 5px;
 	color: #585858;
+	font-size: 12px !important;
 	}
+	
+INPUT[type=text].small,
+INPUT[type=password].small,
+INPUT[type=email].small,
+TEXTAREA.small {
+    width:450px;
+    padding:0 3px;  
+    }
+div.error INPUT[type=text],
+div.error INPUT[type=password],
+div.error TEXTAREA {
+    width:450px;
+    padding:0 3px;  
+    }
+
 TEXTAREA {
-	height:150px;
+	height:130px;
+	padding-top: 5px;
 	}
 
-	INPUT[type=text]:focus {
+	INPUT[type=text]:focus, INPUT[type=password]:focus {
 		background:#fff;
 	}
 		

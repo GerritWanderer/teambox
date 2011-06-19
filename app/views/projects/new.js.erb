@@ -1,0 +1,8 @@
+if ($("li.closeCreate").is(":visible")) {
+  $("div#projectContainer").slideToggle();
+} else {
+  if ($("div#projectContainer").is(":visible")) { $("div#projectContainer").toggle() }
+  $("div#projectContainer").html("<%= escape_javascript(render(:partial => "form")) %>").slideToggle();
+}
+$("div#contentBackground").toggleClass("inactive")
+$("li.create, li.closeCreate").toggle();

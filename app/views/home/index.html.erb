@@ -1,10 +1,25 @@
 <div id='projectBackground'>
-	<ul id='login'>
-	  <%= form_for(:user, :url => user_session_path) do |f| %>
-      <%= f.text_field :email, :class => "test" %>
-      <%= f.password_field :password %>
-      <%= f.submit 'Sign in' %>
-      <%= link_to "Forgot your password?", new_password_path('user') %>
-    <% end %>
-	</ul>
+    <div id='standardForm'>
+    	<div id='login'>
+    	  <%= form_for(:user, :url => user_session_path) do |f| %>
+          <div class='formRow'>
+             <label class='small' for="user_email">Ihre Email-Adresse</label> <%= f.text_field :email, :class => "small" %>
+          </div>
+          <div class='formRow'>
+              <label class='small' for="user_password">Ihr Passwort</label><%= f.password_field :password, :class => "small" %>
+          </div>
+          <div class='formRow'>
+              <%= f.submit 'Jetzt einloggen' %>
+          </div>
+          <div class='formRow rightText'>
+            <p class='buttonStyle'><%= link_to "Passwort vergessen?", new_password_path('user') %></p>
+          </div>
+          <div class='clear'></div>
+        <% end %>
+    	</div>
+    </div>
+    <div class='rightArea'>
+        <img src="/assets/img_layout/teambox-icon-gross.png" alt="Projektmanagement" />
+    </div>
+    <div class='clear'></div>
 </div>

@@ -1,17 +1,33 @@
-<h2>Sign in</h2>
+<div id='projectBackground'>
+  <% flash.each do |key, value| %>
+    <div class ="flash <%= key %>"><div class="icon">&nbsp;</div><p><%= value %></p></div>
+  <% end %>
+    <div id='standardForm'>
+        <div id='login'>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p><%= f.label :email %><br />
-  <%= f.email_field :email %></p>
+  <div class='formRow'>
+             <label class='small' for="user_email">Ihre Email-Adresse</label> <%= f.email_field :email, :class => "small" %></p>
+</div>
+  <div class='formRow'>
+              <label class='small' for="user_password">Ihr Passwort</label><%= f.password_field :password, :class => "small" %></p>
+</div>
+  
 
-  <p><%= f.label :password %><br />
-  <%= f.password_field :password %></p>
+  <div class='formRow'>
+              <%= f.submit 'Jetzt einloggen' %>
+          </div>
+          <div class='formRow rightText'>
+            <p class='buttonStyle'><%= link_to "Passwort vergessen?", new_password_path('user') %></p>
+          </div>
+          <div class='clear'></div>
 
-  <% if devise_mapping.rememberable? -%>
-    <p><%= f.check_box :remember_me %> <%= f.label :remember_me %></p>
-  <% end -%>
-
-  <p><%= f.submit "Sign in" %></p>
 <% end %>
-
+</div>
+    </div>
+    <div class='rightArea'>
+        <img src="/assets/img_layout/teambox-icon-gross.png" alt="Projektmanagement" />
+    </div>
+    <div class='clear'></div>
+</div>
 <%= render :partial => "devise/shared/links" %>

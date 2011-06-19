@@ -6,15 +6,21 @@ class MessagesController < ApplicationController
   end
   
   def show # see init_messages
+    @message.update_attributes(:readers => @message.readers.push(current_user.id)) unless @message.readers.index(current_user.id)
   end
 
   def new # see init_messages
+  end
+  
+  def new_answer # see init_messages
+    render "new_answer"
   end
 
   def edit # see init_messages
   end
 
   def create
+    params[:message][:user_id] = current_user.id
     @message = @project.messages.build(params[:message])
     if @message.save
       redirect_to @project, :notice => 'Message was successfully created.'
@@ -46,6 +52,6 @@ class MessagesController < ApplicationController
     @project = Project.find(params[:project_id])
     @projects = @project.closed == 1 ? Project.closed : Project.active
     @message = params[:id] ? @project.messages.find(params[:id]) : Message.new
-    @messages = @project.messages
+    @messages = @project.messages.is_topic
   end
 end

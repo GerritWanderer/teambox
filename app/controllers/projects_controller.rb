@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   end
   
   def new # see init_projects
-    render "index"
+    render request.xhr? ? "new" : "index"
   end
 
   def edit # see init_projects

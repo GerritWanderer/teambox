@@ -1,6 +1,8 @@
 @import "basic";
 
 a {text-decoration: none;}
+.ui-widget-content, .ui-widget-header {border: 0 !important;background: none !important;}
+.ui-datepicker td span, .ui-datepicker td a {padding: 0.4em !important;}
 
 div#headerBackground{
   height: 143px;
@@ -25,6 +27,25 @@ div#headerBackground{
       img { margin-right: 10px }
     }
   }
+}
+
+div.alert {
+  background: url(/assets/img_layout/orange-back.png) left top repeat;
+  font-size: 12px;
+  color: #585858;
+  width: 550px;
+  height: 32px;
+  border: 1px solid white;
+  float: left;
+  
+  div.icon { 
+    width: 20px;
+    height: 17px;
+    margin: 7px 0px 0px 7px;
+    background: url(/assets/img_layout/fail.png) left top no-repeat;
+    float: left;
+  }
+  p { margin-top: 10px; }
 }
 
 div.notice {
@@ -58,17 +79,17 @@ div#projectBackground {
   height: 86px;
   overflow: hidden;
   
-  .navLayout { padding-top: 55px; }
+  .navLayout { padding-top: 59px; }
   ul { float: right; }
   ul li {
     float: left;
     margin-right: 2px;
     color: #fff;
     font-size: 12px;
-    height: 30px;
+    height: 26px;
     a {
     	display: block;
-    	padding: 12px 10px 0 10px;
+    	padding: 10px 10px 0 10px;
     	font-size: 12px;
     	color: #fff;
     }
@@ -82,7 +103,7 @@ div#projectBackground {
     }
   }
   li.first {
-    background: url(/assets/img_layout/nav-teiler.gif) right top no-repeat;
+    background: url(/assets/img_layout/nav-teiler.gif) right -3px no-repeat;
   }
   li.button {
     background-color: #7A7A7A;
@@ -93,8 +114,8 @@ div#projectBackground {
   }
 
   li.button a {
-    font-size: 16px;
-    padding-top: 8px;
+    font-size: 14px;
+    padding-top: 7px;
     border: 0;
   }
 }

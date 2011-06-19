@@ -7,6 +7,11 @@ class AttachmentsController < ApplicationController
   
   def show # see init_attachments
   end
+  
+  def read
+    @attachment.update_attributes(:readers => @attachment.readers.push(current_user.id)) unless @attachment.readers.index(current_user.id)
+    redirect_to project_attachments_path(@project)
+  end
 
   def new # see init_attachments
   end

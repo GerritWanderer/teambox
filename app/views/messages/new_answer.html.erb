@@ -1,4 +1,4 @@
-<%= form_for([@project, @message]) do |f| %>
+<%= form_for([@project, @message], :url => { :action => "create" }, :method => :post) do |f| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
@@ -13,14 +13,23 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :value => "RE: #{@message.title}" %>
   </div>
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.text_area :body %>
+<textarea id="message_body" name="message[body]">
+... Ihre Antwort ...
+
+### ###
+### Ursprüngliche Nachricht, geschrieben von <%= @message.user %> am <%= @message.created_at.strftime("%d.%m.%Y") %> ###
+### ###
+
+<%= @message.body %>
+</textarea>
   </div>
   <div class="actions">
     <%= f.hidden_field :project_id, :value => @project.id %>
-    <%= f.submit %>
+    <%= f.hidden_field :topic_id, :value => @message.id %>
+    <%= f.submit :value => "Schreibe Antwort" %>
   </div>
 <% end %>

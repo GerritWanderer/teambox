@@ -8,8 +8,17 @@ Teambox::Application.routes.draw do
   end
   devise_for :users
   resources :projects do
-    resources :messages
-    resources :attachments
+    resources :messages do
+      member do
+        get 'new_answer', :as => :new_answer
+        post 'create_answer', :as => :create_answer
+      end
+    end
+    resources :attachments do
+      member do
+        get 'read', :as => :read
+      end
+    end
   end
   
 end

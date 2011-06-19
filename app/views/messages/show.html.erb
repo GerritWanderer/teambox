@@ -1,25 +1,51 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Title:</b>
-  <%= @message.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= @message.body %>
-</p>
-
-<p>
-  <b>Task:</b>
-  <%= @message.task %>
-</p>
-
-<p>
-  <b>Project:</b>
-  <%= @message.project %>
-</p>
-
-
-<%= link_to 'Edit', edit_message_path(@message) %> |
-<%= link_to 'Back', messages_path %>
+<div id='contentBackground'>
+    <div id='selectedProject'>
+        <div class='project'>
+            <ul>
+                <li class='title'><span><%= @project.title %></span></li>
+                <li class='meta'><span><%= @project.id %> / <%= @project.created_at.strftime("%d.%m.%Y") %></span></li>
+                <li class='action view'><span><a></a></span></li>
+                <li class='action edit active'><%= link_to image_tag("/assets/img_layout/edit-off.png"), edit_project_path(@project) %></li>
+                <li class='action del'><%= link_to image_tag("/assets/img_layout/delete-off.png"), @project, confirm: 'Are you sure?', method: :delete %></li>
+            </ul>
+        </div>
+        <div class='clear'></div>
+    </div>
+<div class='containerWrapper'>
+        <div class='container'>
+            <div id='contentContainer'>
+                <div id='messages'>
+                    <p class='buttonStyle left'><%= link_to 'Zurück zur Übersicht', project_messages_path %></p>
+                    
+                    <div class='message read'>
+                        <p id="notice"><%= notice %></p>
+                        
+                        <ul>
+                            <li class='title'><%= @message.body %></li>
+                            <li class='meta'>
+                                <%= @message.title %> / <%= @message.task %> / <%= @message.project %>
+                            </li>
+                        </ul>
+                   </div>
+                   <h2>Antworten auf diese Nachricht</h2>
+                   <% @message.messages.each do |answer| %>
+                      <div class='message read'>
+                          <ul>
+                              <li class='title'><%= answer.body %></li>
+                              <li class='meta'>
+                                  <%= answer.title %> / <%= answer.task %> / <%= answer.project %>
+                              </li>
+                          </ul>
+                     </div>
+                   <% end %>
+                <p class='buttonStyle'><%= link_to 'Antwort', new_answer_project_message_path(@project, @message) %></p>
+                </div>
+                 </div>
+                <div id='calendarBackgroundB'>
+                <div class='calendarLayout'>
+                </div>
+            </div>
+            <div class='clear'></div>
+    </div>
+</div>
+</div>
