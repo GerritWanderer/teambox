@@ -1,6 +1,6 @@
 <ul id='filterDetail'>
-	<li class='news mail first active'><%= link_to "Nachrichten", project_messages_path(@project) %></li>
-	<li class='news file'><%= link_to "Dateien", project_attachments_path(@project) %></li>
+	<li class='news mail first active'><%= link_to "Nachrichten", project_messages_path(@project) %> <%= ("%02d" % @project.messages.user_unread(current_user.id).count) %></li>
+	<li class='news file'><%= link_to "Dateien", project_attachments_path(@project) %> <%= ("%02d" % @project.attachments.user_unread(current_user.id).count) %></li>
 	<li class='news date'><a>Termine</a></li>
 	<li class="last"><%= link_to "Neue Nachricht", new_project_message_path(@project) %></li>
 </ul>

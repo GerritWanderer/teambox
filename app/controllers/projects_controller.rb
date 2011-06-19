@@ -44,7 +44,7 @@ class ProjectsController < ApplicationController
   protected
   def init_projects
     @show_project_form, @show_projects, @project_button = Project.get_visibility_options(params[:controller], params[:action])
-    @projects = params[:closed].to_i == 1 ? Project.closed : Project.active
+    @projects = params[:closed].to_i == 1 ? current_user.projects.closed : current_user.projects.active
     @project = params[:id] ? Project.find(params[:id]) : Project.new
     @messages = @project.messages
   end

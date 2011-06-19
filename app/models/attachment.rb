@@ -5,4 +5,5 @@ class Attachment < ActiveRecord::Base
   validates_presence_of :project
   
   serialize :readers, Array
+  scope :user_unread, proc {|user_id| where("readers NOT LIKE '%- #{user_id}%'")}
 end
